@@ -10,12 +10,8 @@ public class SpacecraftController : MonoBehaviour {
     private float acceleration = 0.5f;
     [SerializeField]
     private float bulletShootInterval = 0.25f;
-
-    [Header("Prefabs")]
-    [SerializeField] 
-    private GameObject BulletPrefab;
     
-
+    public Vector2 Position => transform.position;
     public Vector2 RigidbodyPosition => rigidbody.position;
     public float CurrentRotation { get; private set; }
     public Vector2 InputMovement { get; private set; }
@@ -79,6 +75,6 @@ public class SpacecraftController : MonoBehaviour {
     
     private void Shoot() {
         Transform thisTransform = transform; //TODO Object pool
-        Instantiate(BulletPrefab, thisTransform.position, thisTransform.rotation);
+        Instantiate(GameManager.Instance.BulletPrefab, thisTransform.position, thisTransform.rotation);
     }
 }
