@@ -78,7 +78,7 @@ public class SpacecraftController : MonoBehaviour {
     
     
     private void Shoot() {
-        Transform thisTransform = transform;
+        Transform thisTransform = transform; //TODO Object pool
         Instantiate(BulletPrefab, thisTransform.position, thisTransform.rotation);
     }
 }
