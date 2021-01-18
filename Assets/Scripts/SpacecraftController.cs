@@ -46,33 +46,15 @@ public class SpacecraftController : MonoBehaviour {
         CurrentRotation -= InputMovement.x * rotationSpeed * Time.fixedDeltaTime;
 
         Vector2 velocity = rigidbody.velocity;
-        Vector2 inputDirection = transform.up * acceleration;
         
-        Vector2 forwardInputVelocity = inputDirection * InputMovement.y * Time.fixedDeltaTime;
+        Vector2 forwardVelocity = Time.fixedDeltaTime * acceleration * transform.up * InputMovement.y;
 
-        Vector2 targetVelocity = velocity + forwardInputVelocity;
-        if (InputMovement.y < 0 && SameVectorDirection(targetVelocity, velocity )) {
-            targetVelocity = Vector2.zero;
-        }
+        Vector2 targetVelocity = velocity + forwardVelocity;
 
         rigidbody.velocity = targetVelocity;
         rigidbody.rotation = CurrentRotation;
     }
 
-    private bool SameVectorDirection(Vector2 a, Vector2 b) {
-        return (!IsFloatZero(a.x) || !IsFloatZero(a.y))
-               && (!SameSign(a.x, b.x) || !SameSign(a.y, b.y));
-    }
-
-    private bool IsFloatZero(float f) {
-        return Math.Abs(f) < 0.001;
-    }
-
-    private bool SameSign(float a, float b) {
-        return Math.Sign(a) == Math.Sign(b);
-    }
-    
-    
     private void Shoot() {
         Transform thisTransform = transform; //TODO Object pool
         Instantiate(GameManager.Instance.BulletPrefab, thisTransform.position, thisTransform.rotation);
