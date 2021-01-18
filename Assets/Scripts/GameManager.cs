@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 [DefaultExecutionOrder(-10000)]
@@ -25,6 +24,9 @@ public class GameManager : MonoBehaviour {
 	public Vector2 SpacecraftPosition => spacecraft.Position;
 
 
+	private GameObjectPool bulletPool;
+	public GameObjectPool BulletPool => bulletPool;
+
 
 	private void Awake() {
 		if (Instance != null) {
@@ -40,5 +42,9 @@ public class GameManager : MonoBehaviour {
 		if (spacecraft == null) {
 			Debug.LogError("Spacecraft is null", this);
 		}
+		
+		bulletPool = new GameObjectPool(
+			bulletPrefab, 
+			Mathf.CeilToInt(1.0f / spacecraft.BulletShootInterval * Bullet.LifeTime + 0.1f));
 	}
 }

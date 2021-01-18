@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class SpacecraftController : MonoBehaviour {
@@ -16,6 +15,10 @@ public class SpacecraftController : MonoBehaviour {
     public float CurrentRotation { get; private set; }
     public Vector2 InputMovement { get; private set; }
     public bool InputShoot { get; private set; }
+
+    public float BulletShootInterval => bulletShootInterval;
+    public float Acceleration => acceleration;
+    public float RotationSpeed => rotationSpeed;
 
     private new Rigidbody2D rigidbody;
     private float currentBulletDelay;
@@ -47,7 +50,7 @@ public class SpacecraftController : MonoBehaviour {
 
         Vector2 velocity = rigidbody.velocity;
         
-        Vector2 forwardVelocity = Time.fixedDeltaTime * acceleration * transform.up * InputMovement.y;
+        Vector2 forwardVelocity = Time.fixedDeltaTime * acceleration * InputMovement.y * transform.up;
 
         Vector2 targetVelocity = velocity + forwardVelocity;
 
@@ -56,7 +59,17 @@ public class SpacecraftController : MonoBehaviour {
     }
 
     private void Shoot() {
-        Transform thisTransform = transform; //TODO Object pool
-        Instantiate(GameManager.Instance.BulletPrefab, thisTransform.position, thisTransform.rotation);
+        GameObject bullet = GameManager.Instance.BulletPool.Get();
+        if (bullet) {
+            Transform thisTransform = transform;
+            Transform bulletTransform = bullet.transform;
+            Bullet bulletComponent = bullet.GetComponent<Bullet>();
+            
+            bulletTransform.position = thisTransform.position;
+            bulletTransform.rotation = thisTransform.rotation;
+            
+            bulletComponent.Speed = rigidbody.velocity.magnitude;
+            bulletComponent.ResetBullet();
+        }
     }
 }
