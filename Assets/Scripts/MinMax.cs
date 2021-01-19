@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-public class MinMax {
+public struct MinMax {
 
 	public readonly float Min;
 	public readonly float Max;

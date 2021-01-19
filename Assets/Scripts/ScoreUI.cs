@@ -6,7 +6,7 @@ public class ScoreUI : MonoBehaviour {
 
     private Text scoreField;
     
-    void Start() {
+    private void Start() {
         ScoreManager.Instance.OnScoreChange += OnScoreChange;
         scoreField = GetComponent<Text>();
     }

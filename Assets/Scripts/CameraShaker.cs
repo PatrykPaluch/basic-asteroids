@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class CameraShaker : MonoBehaviour {
@@ -15,7 +14,7 @@ public class CameraShaker : MonoBehaviour {
 	private float currShakeTime = float.PositiveInfinity;
 	private float currShakeFreqTime = float.PositiveInfinity;
 
-	private float noDefaultAmplitude = 0;
+	private float noDefaultAmplitude;
 	
 	private Vector2 targetOffset;
 	private Vector2 previousOffset;

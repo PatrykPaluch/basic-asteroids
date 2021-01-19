@@ -1,5 +1,4 @@
-﻿using System.Text.RegularExpressions;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,7 +12,7 @@ public class EndGameScreen : MonoBehaviour {
     private InputField inputName;
 
 
-    private int score = 0;
+    private int score;
     
     private void Start() {
         score = ApplicationData.LastScore;

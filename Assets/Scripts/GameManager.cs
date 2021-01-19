@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 [DefaultExecutionOrder(-10000)]
 public class GameManager : MonoBehaviour {

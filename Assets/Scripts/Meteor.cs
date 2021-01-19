@@ -70,9 +70,9 @@ public class Meteor : MonoBehaviour {
 		Vector2 thisPosition = transform.position;
 		float distance = Vector2.Distance(spacecraftPosition, thisPosition);
 		
-		Camera camera = GameManager.Instance.MainCamera;
-		float orthoSize = camera.orthographicSize;
-		float aspect = camera.aspect;
+		Camera mainCamera = GameManager.Instance.MainCamera;
+		float orthoSize = mainCamera.orthographicSize;
+		float aspect = mainCamera.aspect;
 		float screenWidth = orthoSize * aspect;
 
 		if (distance > screenWidth * 2) {

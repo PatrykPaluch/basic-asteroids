@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class IntMinMax {
+public struct IntMinMax {
 
 	public readonly int Min;
 	public readonly int Max;

@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class SpacecraftController : MonoBehaviour {
@@ -85,7 +84,7 @@ public class SpacecraftController : MonoBehaviour {
 
     public void Disable() {
         CameraShaker shaker = GameManager.Instance.Shaker;
-        shaker.Shake(shaker.shakeAmplitude * 2.5f, 0.5f);
+        shaker.Shake(shaker.shakeAmplitude * 3f, 0.75f);
         gameObject.SetActive(false);
         playerDeathExplosionEffect.transform.position = transform.position;
         playerDeathExplosionEffect.gameObject.SetActive(true);
