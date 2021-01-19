@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [DefaultExecutionOrder(-10000)]
 public class GameManager : MonoBehaviour {
@@ -46,5 +48,16 @@ public class GameManager : MonoBehaviour {
 		bulletPool = new GameObjectPool(
 			bulletPrefab, 
 			Mathf.CeilToInt(1.0f / spacecraft.BulletShootInterval * Bullet.LifeTime + 0.1f));
+	}
+
+	public void GameOver() {
+		ApplicationData.LastScore = ScoreManager.Instance.Score;
+		Spacecraft.Disable();
+		StartCoroutine(WaitToEnd());
+	}
+
+	private IEnumerator WaitToEnd() {
+		yield return new WaitForSeconds(2);
+		SceneManager.LoadScene("Scenes/GameEndScene");
 	}
 }

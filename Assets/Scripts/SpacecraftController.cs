@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class SpacecraftController : MonoBehaviour {
@@ -9,6 +10,9 @@ public class SpacecraftController : MonoBehaviour {
     private float acceleration = 0.5f;
     [SerializeField]
     private float bulletShootInterval = 0.25f;
+
+    [SerializeField]
+    private ParticleSystem playerDeathExplosionEffect;
     
     public Vector2 Position => transform.position;
     public Vector2 RigidbodyPosition => rigidbody.position;
@@ -58,6 +62,12 @@ public class SpacecraftController : MonoBehaviour {
         rigidbody.rotation = CurrentRotation;
     }
 
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.CompareTag("Meteor")) {
+            GameManager.Instance.GameOver();
+        }
+    }
+
     private void Shoot() {
         GameObject bullet = GameManager.Instance.BulletPool.Get();
         if (bullet) {
@@ -71,5 +81,12 @@ public class SpacecraftController : MonoBehaviour {
             bulletComponent.Speed = rigidbody.velocity.magnitude;
             bulletComponent.ResetBullet();
         }
+    }
+
+    public void Disable() {
+        gameObject.SetActive(false);
+        playerDeathExplosionEffect.transform.position = transform.position;
+        playerDeathExplosionEffect.gameObject.SetActive(true);
+        playerDeathExplosionEffect.Play();
     }
 }

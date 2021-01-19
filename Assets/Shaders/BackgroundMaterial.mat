@@ -73,7 +73,7 @@ Material:
     - _Scale: 22.7
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Speed: 0.01
+    - _Speed: 0.02
     - _SrcBlend: 1
     - _SubScale: 1
     - _UVSec: 0

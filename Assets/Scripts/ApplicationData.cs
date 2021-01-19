@@ -1,3 +1,7 @@
-$HEADER$namespace $NAMESPACE$ {
-  public class $CLASS$ : UnityEngine.MonoBehaviour {$END$}
+
+public static class ApplicationData {
+
+	public static int LastScore = 0;
+	public static string LastNick = "";
+	
 }
