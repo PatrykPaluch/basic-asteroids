@@ -5065,7 +5065,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transformToShake: {fileID: 519420032}
   shakeTime: 0.2
-  shakeAmplitude: 0.4
+  shakeAmplitude: 0.2
   shakeFrequency: 21
 --- !u!20 &519420031
 Camera:
