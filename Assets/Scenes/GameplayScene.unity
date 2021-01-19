@@ -10213,7 +10213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialMeteorSize: 2
-  meteorSpawnInterval: 1.5
+  meteorSpawnInterval: 1
 --- !u!114 &1345000532
 MonoBehaviour:
   m_ObjectHideFlags: 0

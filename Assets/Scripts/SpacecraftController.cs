@@ -84,6 +84,8 @@ public class SpacecraftController : MonoBehaviour {
     }
 
     public void Disable() {
+        CameraShaker shaker = GameManager.Instance.Shaker;
+        shaker.Shake(shaker.shakeAmplitude * 2.5f, 0.5f);
         gameObject.SetActive(false);
         playerDeathExplosionEffect.transform.position = transform.position;
         playerDeathExplosionEffect.gameObject.SetActive(true);

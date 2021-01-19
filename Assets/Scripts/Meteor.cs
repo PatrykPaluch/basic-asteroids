@@ -48,6 +48,8 @@ public class Meteor : MonoBehaviour {
 
 		ScoreManager.Instance.Score += 1;
 		
+		GameManager.Instance.Shaker.Shake();
+		
 		ReturnToPool();
 	}
 

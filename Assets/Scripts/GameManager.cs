@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 [DefaultExecutionOrder(-10000)]
 public class GameManager : MonoBehaviour {
@@ -18,6 +19,9 @@ public class GameManager : MonoBehaviour {
 	[SerializeField]
 	private GameObject bulletPrefab;
 
+	[SerializeField]
+	private CameraShaker shaker;
+	
 	public GameObject MeteorPrefab => meteorPrefab;
 	public GameObject BulletPrefab => bulletPrefab;
 	
@@ -25,6 +29,7 @@ public class GameManager : MonoBehaviour {
 	public Camera MainCamera => mainCamera;
 	public Vector2 SpacecraftPosition => spacecraft.Position;
 
+	public CameraShaker Shaker => shaker;
 
 	private GameObjectPool bulletPool;
 	public GameObjectPool BulletPool => bulletPool;
