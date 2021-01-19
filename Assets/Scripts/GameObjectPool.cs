@@ -1,11 +1,7 @@
-
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class GameObjectPool {
-
-	public delegate void ResetGameObjectFunction(GameObject pooledObject);
 
 	private readonly List<GameObject> pool;
 	public int PoolSize => pool.Count;
@@ -14,7 +10,7 @@ public class GameObjectPool {
 
 		pool = new List<GameObject>(poolSize);
 		for (int i = 0; i < poolSize; i++) {
-			GameObject clone = Object.Instantiate(template, Vector3.zero, quaternion.identity);
+			GameObject clone = Object.Instantiate(template, Vector3.zero, Quaternion.identity);
 			clone.SetActive(false);
 			pool.Add(clone);
 		}
