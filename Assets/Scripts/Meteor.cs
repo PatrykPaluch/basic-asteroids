@@ -45,6 +45,8 @@ public class Meteor : MonoBehaviour {
 					meteorGameObject.GetComponent<Meteor>().InitNewMeteor(newSize, position, newVelocity);
 			}
 		}
+
+		ScoreManager.Instance.Score += 1;
 		
 		ReturnToPool();
 	}
