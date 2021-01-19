@@ -26,8 +26,8 @@ public class EndGameScreen : MonoBehaviour {
     private void Update() {
         if (Input.GetKeyUp(KeyCode.Return)) {
             string nick = inputName.text;
+            ApplicationData.LastNick = nick;
             if (nick.Length != 0) {
-                ApplicationData.LastNick = nick;
                 ApplicationData.SaveScore(nick, score);
             }
 
